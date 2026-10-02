@@ -1,20 +1,22 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 
+const ASSET = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const events = [
-  { id:'mehendi', title:'Mehendi', date:'22 Feb 2026', time:'10:00 AM', place:'The Grand Lawn', image:'/images/mehendi.jpg', tone:'sage', description:'An intimate afternoon of mehendi, florals, laughter and close family moments.' },
-  { id:'haldi', title:'Haldi', date:'23 Feb 2026', time:'10:00 AM', place:'Sunset Villa', image:'/images/haldi.jpg', tone:'sun', description:'A golden morning filled with haldi, playful rituals and candid family photographs.' },
-  { id:'sangeet', title:'Sangeet', date:'23 Feb 2026', time:'07:00 PM', place:'Royal Banquet', image:'/images/sangeet.jpg', tone:'violet', description:'Music, movement and a night of performances under velvet-blue lights.' },
-  { id:'wedding', title:'Wedding', date:'24 Feb 2026', time:'07:00 PM', place:'The Grand Palace', image:'/images/wedding.jpg', tone:'rose', description:'The ceremony that brings both families together for the beginning of forever.' },
-  { id:'reception', title:'Reception', date:'25 Feb 2026', time:'08:00 PM', place:'Royal Banquet', image:'/images/finale.jpg', tone:'copper', description:'A candlelit dinner, hugs, photographs and one last celebration.' }
+  { id:'mehendi', title:'Mehendi', date:'22 Feb 2026', time:'10:00 AM', place:'The Grand Lawn', image:ASSET('images/mehendi.jpg'), tone:'sage', description:'An intimate afternoon of mehendi, florals, laughter and close family moments.' },
+  { id:'haldi', title:'Haldi', date:'23 Feb 2026', time:'10:00 AM', place:'Sunset Villa', image:ASSET('images/haldi.jpg'), tone:'sun', description:'A golden morning filled with haldi, playful rituals and candid family photographs.' },
+  { id:'sangeet', title:'Sangeet', date:'23 Feb 2026', time:'07:00 PM', place:'Royal Banquet', image:ASSET('images/sangeet.jpg'), tone:'violet', description:'Music, movement and a night of performances under velvet-blue lights.' },
+  { id:'wedding', title:'Wedding', date:'24 Feb 2026', time:'07:00 PM', place:'The Grand Palace', image:ASSET('images/wedding.jpg'), tone:'rose', description:'The ceremony that brings both families together for the beginning of forever.' },
+  { id:'reception', title:'Reception', date:'25 Feb 2026', time:'08:00 PM', place:'Royal Banquet', image:ASSET('images/finale.jpg'), tone:'copper', description:'A candlelit dinner, hugs, photographs and one last celebration.' }
 ]
 
 const gallery = [
-  {cat:'Story', image:'/images/hero.jpg', title:'A quiet beginning'},
-  {cat:'Mehendi', image:'/images/mehendi.jpg', title:'Henna & laughter'},
-  {cat:'Haldi', image:'/images/haldi.jpg', title:'Sunshine ritual'},
-  {cat:'Sangeet', image:'/images/sangeet.jpg', title:'Dance under the lights'},
-  {cat:'Wedding', image:'/images/wedding.jpg', title:'The ceremony'},
-  {cat:'Finale', image:'/images/finale.jpg', title:'One last sunset'}
+  {cat:'Story', image:ASSET('images/hero.jpg', title:'A quiet beginning'},
+  {cat:'Mehendi', image:ASSET('images/mehendi.jpg', title:'Henna & laughter'},
+  {cat:'Haldi', image:ASSET('images/haldi.jpg', title:'Sunshine ritual'},
+  {cat:'Sangeet', image:ASSET('images/sangeet.jpg', title:'Dance under the lights'},
+  {cat:'Wedding', image:ASSET('images/wedding.jpg', title:'The ceremony'},
+  {cat:'Finale', image:ASSET('images/finale.jpg', title:'One last sunset'}
 ]
 
 function Icon({name,size=20}){
@@ -133,7 +135,7 @@ function App(){
         <p className="eyebrow">A wedding story by Knot & Katha</p>
         <h1>Harsh <span>&</span> Aaravi</h1>
         <p className="gate-date">24 FEB 2026 · THE GRAND PALACE, MEERUT</p>
-        <div className="gate-visual"><img src="images/hero.jpg" alt="AI generated wedding couple"/></div>
+        <div className="gate-visual"><img src={ASSET('images/hero.jpg')} alt="AI generated wedding couple"/></div>
         <button className="btn btn-primary glow" onClick={enter}><span>Enter the experience</span><Icon name="arrow"/></button>
         <p className="gate-note">Tap to open · music starts with your first touch</p>
       </div>
@@ -165,7 +167,7 @@ function App(){
           <div className="mini-stats"><div><strong>5</strong><span>celebrations</span></div><div><strong>∞</strong><span>little moments</span></div><div><strong>1</strong><span>new chapter</span></div></div>
         </div>
         <div className="hero-media reveal">
-          <div className="hero-frame"><img src="images/hero.jpg" alt="AI generated wedding couple portrait"/><span className="frame-tag">AI wedding portrait · cinematic</span></div>
+          <div className="hero-frame"><img src={ASSET('images/hero.jpg')} alt="AI generated wedding couple portrait"/><span className="frame-tag">AI wedding portrait · cinematic</span></div>
           <div className="floating-note note-1"><small>save the date</small><strong>24 · 02 · 2026</strong></div>
           <div className="floating-note note-2"><small>our mood</small><strong>lavender · dusty blue</strong></div>
         </div>
@@ -174,7 +176,7 @@ function App(){
       <section id="story" className="story section-shell">
         <div className="section-head reveal"><div><span className="eyebrow">The beginning</span><h2>Our story, in little scenes.</h2></div><button className="btn btn-ghost" onClick={()=>notify('Story timeline is ready to personalize')}>Personalize story</button></div>
         <div className="story-grid">
-          <div className="story-image reveal tilt"><img src="images/story.jpg" alt="AI generated couple story scene"/></div>
+          <div className="story-image reveal tilt"><img src={ASSET('images/story.jpg')} alt="AI generated couple story scene"/></div>
           <div className="story-copy reveal">
             {[
               ['01','First meet','A conversation that started like any other, then stayed on our minds.'],
@@ -203,7 +205,7 @@ function App(){
       </section>
 
       <section id="venue" className="venue section-shell alt">
-        <div className="venue-art reveal"><img src="images/venue.jpg" alt="AI generated luxury wedding venue"/><div className="venue-badge"><span>The Grand Palace</span><small>Meerut · Uttar Pradesh</small></div></div>
+        <div className="venue-art reveal"><img src={ASSET('images/venue.jpg')} alt="AI generated luxury wedding venue"/><div className="venue-badge"><span>The Grand Palace</span><small>Meerut · Uttar Pradesh</small></div></div>
         <div className="venue-copy reveal"><span className="eyebrow">Where we meet</span><h2>Golden hour, palace lights, and everyone we love.</h2><p>Come early for photographs, stay late for the stories. The venue section is designed as a living postcard, with the location, map and celebration schedule in one place.</p><div className="venue-actions"><button className="btn btn-primary" onClick={()=>window.open('https://www.google.com/maps/search/?api=1&query=The+Grand+Palace+Meerut','_blank')}>Open Google Maps <Icon name="arrow" size={15}/></button><button className="btn btn-ghost" onClick={()=>notify('Venue details copied to your clipboard')}><Icon name="share" size={15}/> Share venue</button></div><div className="venue-points"><span>Luxury setting</span><span>Easy location</span><span>Photo-ready ambience</span></div></div>
       </section>
 
@@ -217,7 +219,7 @@ function App(){
         <div className="music-copy reveal"><span className="eyebrow">Press play & wander</span><h2>Our special song.</h2><p>Use the floating music control at any time. The uploaded song is included locally with the project.</p><div className="player-row"><button className="circle-btn" onClick={toggleMusic}><Icon name={playing?'pause':'play'} size={20}/></button><div><strong>{playing?'Now playing':'Ready to play'}</strong><span>Uploaded wedding track · autoplay attempts after entry</span></div></div><div className="player-actions"><button className="btn btn-primary" onClick={toggleMusic}>{playing?'Pause music':'Play music'} <Icon name={playing?'pause':'play'} size={15}/></button><button className="btn btn-ghost" onClick={()=>notify('Music will continue as you explore')}>Keep it playing</button></div></div>
       </section>
 
-      <section className="finale section-shell reveal"><div className="finale-bg"><img src="images/finale.jpg" alt="AI generated wedding finale scene"/></div><div className="finale-card"><span className="eyebrow">The last frame</span><h2>Good things take time,<br/>just like our forever.</h2><p>Thank you for stepping into our story.</p><div className="finale-actions"><button className="btn btn-primary" onClick={()=>nav('home')}>Back to beginning <Icon name="arrow" size={15}/></button><button className="btn btn-ghost" onClick={shareSite}><Icon name="share" size={15}/> Share Knot & Katha</button></div></div></section>
+      <section className="finale section-shell reveal"><div className="finale-bg"><img src={ASSET('images/finale.jpg')} alt="AI generated wedding finale scene"/></div><div className="finale-card"><span className="eyebrow">The last frame</span><h2>Good things take time,<br/>just like our forever.</h2><p>Thank you for stepping into our story.</p><div className="finale-actions"><button className="btn btn-primary" onClick={()=>nav('home')}>Back to beginning <Icon name="arrow" size={15}/></button><button className="btn btn-ghost" onClick={shareSite}><Icon name="share" size={15}/> Share Knot & Katha</button></div></div></section>
     </main>
 
     <footer className="footer"><div><div className="brand"><div className="brand-mark">✦</div><div><strong>Knot & Katha</strong><small>Stories worth inviting people to.</small></div></div><p>Luxury digital wedding stories, crafted to feel alive.</p></div><div className="footer-links"><button onClick={()=>nav('home')}>Home</button><button onClick={()=>nav('events')}>Events</button><button onClick={()=>nav('gallery')}>Gallery</button><button onClick={()=>nav('venue')}>Venue</button><button onClick={()=>nav('rsvp')}>RSVP</button></div><div className="footer-contact"><button onClick={()=>window.open('https://wa.me/916396486200','_blank')}><Icon name="share" size={16}/> WhatsApp</button><button onClick={()=>window.location.href='mailto:knotkatha@gmail.com'}><Icon name="mail" size={16}/> Email</button></div><div className="footer-bottom"><span>© 2026 Knot & Katha</span><button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>Back to top ↑</button></div></footer>
