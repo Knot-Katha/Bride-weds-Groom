@@ -11,12 +11,12 @@ const events = [
 ]
 
 const gallery = [
-  {cat:'Story', image:ASSET('images/hero.jpg', title:'A quiet beginning'},
-  {cat:'Mehendi', image:ASSET('images/mehendi.jpg', title:'Henna & laughter'},
-  {cat:'Haldi', image:ASSET('images/haldi.jpg', title:'Sunshine ritual'},
-  {cat:'Sangeet', image:ASSET('images/sangeet.jpg', title:'Dance under the lights'},
-  {cat:'Wedding', image:ASSET('images/wedding.jpg', title:'The ceremony'},
-  {cat:'Finale', image:ASSET('images/finale.jpg', title:'One last sunset'}
+  {cat:'Story', image:ASSET('images/hero.jpg'), title:'A quiet beginning'},
+  {cat:'Mehendi', image:ASSET('images/mehendi.jpg'), title:'Henna & laughter'},
+  {cat:'Haldi', image:ASSET('images/haldi.jpg'), title:'Sunshine ritual'},
+  {cat:'Sangeet', image:ASSET('images/sangeet.jpg'), title:'Dance under the lights'},
+  {cat:'Wedding', image:ASSET('images/wedding.jpg'), title:'The ceremony'},
+  {cat:'Finale', image:ASSET('images/finale.jpg'), title:'One last sunset'}
 ]
 
 function Icon({name,size=20}){
