@@ -113,17 +113,18 @@ function App(){
     e.preventDefault()
     const name=rsvp.name.trim()
     if(!name) return notify('Please enter your name')
-    const subject=encodeURIComponent('Wedding RSVP — Harsh & Aaravi')
-    const body=encodeURIComponent([
+    const message=[
+      '💌 Wedding RSVP — Harsh & Aaravi',
+      '',
       `Name: ${name}`,
       `Guests: ${rsvp.guests}`,
       `Will attend: ${rsvp.attend}`,
       rsvp.message.trim() ? `Message: ${rsvp.message.trim()}` : '',
       '',
       'Sent from Knot & Katha'
-    ].filter(Boolean).join('\n'))
-    window.location.href=`mailto:knotkatha@gmail.com?subject=${subject}&body=${body}`
-    notify('Your email app is opening with the RSVP details')
+    ].filter(Boolean).join('\n')
+    const whatsappUrl=`https://wa.me/916396486200?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl,'_blank','noopener,noreferrer')
   }
   const shareSite=async()=>{
     const data={title:'Knot & Katha',text:'Stories worth inviting people to.',url:location.href}
@@ -222,7 +223,7 @@ function App(){
 
       <section id="rsvp" className="rsvp section-shell">
  <div className="rsvp-intro reveal"><span className="eyebrow">Your seat is waiting</span><h2>Will you join us?</h2><p>Every response gets its own little spark. Submit the form and the page turns the moment into a keepsake.</p><button className="btn btn-ghost" onClick={saveDate}><Icon name="calendar" size={15}/> Save wedding date</button></div>
-        <form className="rsvp-card reveal" onSubmit={submitRsvp}><div className="rsvp-glow"/><label>Name<input value={rsvp.name} onChange={e=>setRsvp({...rsvp,name:e.target.value})} placeholder="Your full name"/></label><label>Guests<select value={rsvp.guests} onChange={e=>setRsvp({...rsvp,guests:e.target.value})}><option>1</option><option>2</option><option>3</option><option>4+</option></select></label><label>Will you attend?<select value={rsvp.attend} onChange={e=>setRsvp({...rsvp,attend:e.target.value})}><option>Yes</option><option>No</option><option>Maybe</option></select></label><label>Message<textarea value={rsvp.message} onChange={e=>setRsvp({...rsvp,message:e.target.value})} placeholder="Leave a note for the couple"/></label><button className="btn btn-primary full" type="submit">Send RSVP by Email <Icon name="arrow" size={15}/></button></form>
+        <form className="rsvp-card reveal" onSubmit={submitRsvp}><div className="rsvp-glow"/><label>Name<input value={rsvp.name} onChange={e=>setRsvp({...rsvp,name:e.target.value})} placeholder="Your full name"/></label><label>Guests<select value={rsvp.guests} onChange={e=>setRsvp({...rsvp,guests:e.target.value})}><option>1</option><option>2</option><option>3</option><option>4+</option></select></label><label>Will you attend?<select value={rsvp.attend} onChange={e=>setRsvp({...rsvp,attend:e.target.value})}><option>Yes</option><option>No</option><option>Maybe</option></select></label><label>Message<textarea value={rsvp.message} onChange={e=>setRsvp({...rsvp,message:e.target.value})} placeholder="Leave a note for the couple"/></label><button className="btn btn-primary full" type="submit">Send RSVP on WhatsApp <Icon name="arrow" size={15}/></button></form>
       
       </section>
 
