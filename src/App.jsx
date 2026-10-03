@@ -210,8 +210,28 @@ function App(){
       </section>
 
       <section id="rsvp" className="rsvp section-shell">
-        <div className="rsvp-intro reveal"><span className="eyebrow">Your seat is waiting</span><h2>Will you join us?</h2><p>Every response gets its own little spark. Submit the form and the page turns the moment into a keepsake.</p><button className="btn btn-ghost" onClick={saveDate}><Icon name="calendar" size={15}/> Save wedding date</button></div>
-        <form className="rsvp-card reveal" onSubmit={submitRsvp}><div className="rsvp-glow"/><label>Name<input value={rsvp.name} onChange={e=>setRsvp({...rsvp,name:e.target.value})} placeholder="Your full name"/></label><label>Guests<select value={rsvp.guests} onChange={e=>setRsvp({...rsvp,guests:e.target.value})}><option>1</option><option>2</option><option>3</option><option>4+</option></select></label><label>Will you attend?<select value={rsvp.attend} onChange={e=>setRsvp({...rsvp,attend:e.target.value})}><option>Yes</option><option>No</option><option>Maybe</option></select></label><label>Message<textarea value={rsvp.message} onChange={e=>setRsvp({...rsvp,message:e.target.value})} placeholder="Leave a note for the couple"/></label><button className="btn btn-primary full" type="submit">Send RSVP <Icon name="arrow" size={15}/></button></form>
+         <div className="rsvp reveal" id="rsvp">
+            <span className="eyebrow">RSVP</span>
+            <h2>We'd Love <br /><i>to Have You</i></h2>
+            <div className="heartline"><span /><Heart size={12} fill="currentColor" /><span /></div>
+            {rsvpSent ? (
+              <div className="success"><Heart size={30} fill="currentColor" /><strong>Thank you!</strong><span>Your RSVP has been sent to WhatsApp.</span></div>
+            ) : (
+              <form onSubmit={sendRsvp}>
+                <div className="form-row">
+                  <input name="name" required placeholder="Your Name" />
+                  <input name="email" type="email" placeholder="Email Address" />
+                </div>
+                <select name="attendance" defaultValue="" required>
+                  <option value="" disabled>Will you attend?</option>
+                  <option>Yes, with pleasure</option>
+                  <option>Sorry, can't make it</option>
+                </select>
+                <textarea name="message" rows="3" placeholder="Message (Optional)" />
+                <button className="hero-btn dark-btn" type="submit"><Send size={15} /> Send RSVP <ChevronRight size={15} /></button>
+              </form>
+            )}
+          </div>
       </section>
 
       <section className="music-panel section-shell alt">
